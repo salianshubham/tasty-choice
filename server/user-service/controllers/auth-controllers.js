@@ -4,13 +4,15 @@ const login = async (req, res) => {
     try {
         const { email, password } = req.body
         const userExists = await User.findOne({ email })
-        
+
+
         if (!userExists) {
             return res.status(400).send({ message: "Invalid Credentials" })
         }
 
         const checkPassword = await bcrypt.compare(password, userExists.password);
         if (checkPassword) {
+
             res.status(200).send(
                 {
                     message: "LogIn successfully.",
@@ -29,7 +31,7 @@ const login = async (req, res) => {
 
 const signUp = async (req, res) => {
     try {
-        const { username, email, password } = req.body;
+        const { username, phone, email, password } = req.body;
 
         const userExists = await User.findOne({ email: email });
 
@@ -40,7 +42,7 @@ const signUp = async (req, res) => {
         const saltRound = 10;//it is used to hash the password for 10 times more stronger
         const hash_password = await bcrypt.hash(password, saltRound)
 
-        const userCreated = await User.create({ username: username, email: email, password: hash_password })
+        const userCreated = await User.create({ username: username, phone: phone, email: email, password: hash_password })
         res.status(200).send(
             {
                 message: "Data saved successfully.",
@@ -49,7 +51,7 @@ const signUp = async (req, res) => {
             })
     } catch (error) {
         console.log(error)
-        res.status(400).send("Page Not Found")
+        res.status(400).send("sign up Page Not Found")
     }
 }
 
