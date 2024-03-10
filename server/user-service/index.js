@@ -15,9 +15,16 @@ app.use(cors(corsOperations))
 app.use(express.json())
 app.use("/api/auth", router);
 
+// app.get("/", (req, res) => {
+//     res.status(200).send({
+//         msg: "splash screen"
+//     })
+// })
+
 connectDB().then(() => {
     app.listen(port, () => {
         console.log("Server Running in Port Number : ", port)
+        
     })
 })
 

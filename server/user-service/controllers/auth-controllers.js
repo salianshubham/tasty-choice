@@ -55,7 +55,16 @@ const signUp = async (req, res) => {
     }
 }
 
+const SplashScreen = async (req, res) => {
+    try {
+        res.status(200).send({
+            msg: "splash screen"
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(400).send("sign up Page Not Found")
+    }
+}
 
 
-
-module.exports = { login, signUp }
+module.exports = { login, signUp,SplashScreen }
