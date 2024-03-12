@@ -66,5 +66,17 @@ const SplashScreen = async (req, res) => {
     }
 }
 
+const addDishToMenu = async (req, res) => {
+    try {
+        console.log(req.file)
+        // res.status(200).send({
+        //     msg: "all right",
+        //     data: req.file
+        // })
+    } catch (error) {
+        console.log(error)
+    }
+}
 
-module.exports = { login, signUp,SplashScreen }
+
+module.exports = { login, signUp, SplashScreen, addDishToMenu }
