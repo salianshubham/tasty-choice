@@ -42,12 +42,68 @@ const dishSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    catagories: {
+    categories: {
         type: String,
         required: true
     },
 })
 const Dish = new mongoose.model("Dish", dishSchema);
+
+const AddToCartSchema = new mongoose.Schema({
+
+    item: [
+        {
+            dishName: {
+                type: String,
+                required: true
+            },
+            price: {
+                type: Number,
+                required: true
+            }
+        }
+    ]
+})
+
+const AddToCart = new mongoose.model("AddToCart", AddToCartSchema)
+
+
+const placeOrderSchema = new mongoose.Schema({
+    Full_Name: {
+        type: String,
+        required: true,
+    },
+    Phone_Number: {
+        type: Number,
+        required: true
+    },
+    Pin_Code: {
+        type: Number,
+        required: true
+    },
+    State: {
+        type: String,
+        required: true
+    },
+    City: {
+        type: String,
+        required: true
+    },
+    House_No: {
+        type: String,
+        required: true
+    },
+    Road_Name_Area_Colony: {
+        type: String,
+        required: true
+    },
+    No_People: {
+        type: String,
+        required: true
+    },
+})
+const PlaceOrder_model = new mongoose.model("place_order", placeOrderSchema);
+
 userSchema.methods.generateToken = async function () {
     try {
         return jwt.sign({
@@ -67,4 +123,4 @@ userSchema.methods.generateToken = async function () {
 
 const User = new mongoose.model("User", userSchema);
 
-module.exports = {User,Dish};
+module.exports = { User, Dish, AddToCart, PlaceOrder_model };
