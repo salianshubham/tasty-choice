@@ -3,7 +3,8 @@ const bcrypt = require("bcryptjs")
 const path = require('path');
 const multer = require('multer');
 
-const destinationPath = path.join(__dirname, '../../../client/tastychoice/public/images');
+// const destinationPath = path.join(__dirname, '../../../client/tastychoice/public/images');
+const destinationPath = path.join(__dirname, '../../client/tastychoice/public/images');
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, destinationPath); // Set the path to your image folder
