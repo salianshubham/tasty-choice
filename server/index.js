@@ -7,7 +7,7 @@ const connectDB = require("./dataBase/db")
 const cors = require("cors")
 
 const corsOperations = {
-    origin: "http://localhost:3000",
+    origin: "https://tastychoice.netlify.app",
     methods: "GET, POST,PUT,DELETE,PATCH,HEAD",
     credentials: true
 }
