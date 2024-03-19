@@ -221,7 +221,8 @@ const PlaceOrder = async (req, res) => {
                 No_People: No_People,
 
             })
-        res.status(200).send({ message: placeOrderResponce })
+        const deleteCart = await AddToCart.deleteMany({});
+        res.status(200).send({ message: placeOrderResponce,deleteCart })
     } catch (error) {
         console.log(error)
         res.status(400).send({ error })
