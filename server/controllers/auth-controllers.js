@@ -86,7 +86,7 @@ const SplashScreen = async (req, res) => {
 const addDishToMenu = async (req, res) => {
     try {
 
-
+        
         upload.single('image')(req, res, async (err) => {
             if (err) {
                 console.error('Error uploading image:', err.message);
